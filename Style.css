@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    box-sizing: 0;
+}
+body{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+.MainClass{
+
+    background-color: black;
+    color: white;
+    padding: 20px 30px 20px 30px;
+    border-radius: 20%;
+}
