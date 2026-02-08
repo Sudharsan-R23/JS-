@@ -1,0 +1,17 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "I'm Sudharsan I going to dev and try Express",
+  "license": "ISC",
+  "author": "Sudharsan",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-dev": "nodemon ./src/index.mjs",
+    "start": "node ./src/index.mjs"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
