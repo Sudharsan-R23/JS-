@@ -1,4 +1,5 @@
 import express from 'express';
+import morgan from 'morgan';
 
 const App = express();
 
@@ -10,6 +11,8 @@ const SysDatas = [
     {"id":3, "Name": "Dell"},
     {"id":4, "Name": "Msi"}
 ];
+
+App.use(morgan('dev'));
 
 App.get('/', (req, res)=>{
     res.send({"index":404})
