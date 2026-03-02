@@ -15,9 +15,13 @@ const SysDatas = [
 App.use(morgan('dev'));
 
 App.get('/system', (req, res)=>{
-    
     const {filter,value} =req.query;
-    console.log(filter,value);
+    if(filter && value){
+        return res.send(SysDatas.filter(((datas)=>datas[filter].toLowerCase().includes(value))));
+    }
+    else{
+        return res.send(SysDatas);
+    }
 
 });
 
