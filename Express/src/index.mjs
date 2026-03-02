@@ -6,16 +6,19 @@ const App = express();
 const PORT = 3000;
 
 const SysDatas = [
-    {"id":1, "Name": "Acer"},
-    {"id":2, "Name": "Hp"},
-    {"id":3, "Name": "Dell"},
-    {"id":4, "Name": "Msi"}
+    {"id":1, "name": "Acer"},
+    {"id":2, "name": "Hp"},
+    {"id":3, "name": "Dell"},
+    {"id":4, "name": "Msi"}
 ];
 
 App.use(morgan('dev'));
 
-App.get('/', (req, res)=>{
-    res.send({"index":404})
+App.get('/system', (req, res)=>{
+    
+    const {filter,value} =req.query;
+    console.log(filter,value);
+
 });
 
 App.get('/system/:id', (req, res)=>{
