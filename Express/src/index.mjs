@@ -23,7 +23,7 @@ App.get('/api/system', (req, res)=>{
     }
 
 });
-App.use(express.json);
+App.use(express.json());
 
 App.post('/api/system',(req,res)=>{
     console.log(req.body);
