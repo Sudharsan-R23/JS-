@@ -12,9 +12,8 @@ const SysDatas = [
     {"id":4, "name": "Msi"}
 ];
 
-App.use(morgan('dev'));
 
-App.get('/system', (req, res)=>{
+App.get('/api/system', (req, res)=>{
     const {filter,value} =req.query;
     if(filter && value){
         return res.send(SysDatas.filter(((datas)=>datas[filter].toLowerCase().includes(value))));
@@ -24,8 +23,13 @@ App.get('/system', (req, res)=>{
     }
 
 });
+App.use(express.json);
 
-App.get('/system/:id', (req, res)=>{
+App.post('/api/system',(req,res)=>{
+    console.log(req.body);
+    res.status(201).send("suscess")
+})
+App.get('api/system/:id', (req, res)=>{
     const id = parseInt(req.params.id);
     if(isNaN(id)){
        return res.status(404).send("It's not an Number");
@@ -39,9 +43,7 @@ App.get('/system/:id', (req, res)=>{
     else{
         res.status(404).send("Data Not Find");
     }
-
-
-})
+});
 
 App.listen(PORT, ()=>{
     console.log(`Server Listen Port:${PORT}`);
