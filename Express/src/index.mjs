@@ -25,10 +25,6 @@ App.get('/api/system', (req, res)=>{
 });
 App.use(express.json());
 
-App.post('/api/system',(req,res)=>{
-    res.status(201).send("suscess")
-});
-
 App.get('/api/system/:id', (req, res)=>{
     const id = parseInt(req.params.id);
     if(isNaN(id)){
@@ -47,13 +43,14 @@ App.get('/api/system/:id', (req, res)=>{
 
 App.put('/api/system/:id',(req,res)=>{
     const param_id = parseInt(req.params.id);
-    if(isNaN(param_id)){
-        res.status(404).send('id is not number');
+    if(isNaN(param_id) || param_id === -1){
+        res.status(404).send('id is not valied');
     }
     else{
         const Index = SysDatas.findIndex((indexData)=>indexData.id === param_id);
-        const {Body_id, name} = req.body;
-        console.log(Body_id);
+        const {Body} = req;
+        console.log(Index);
+
     }
     
 
