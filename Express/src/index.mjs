@@ -46,13 +46,10 @@ App.put('/api/system/:id',(req,res)=>{
     if(isNaN(param_id) || param_id === -1){
         res.status(404).send('id is not valied');
     }
-    else{
-        const Index = SysDatas.findIndex((indexData)=>indexData.id === param_id);
-        const {Body} = req;
-        console.log(Index);
-
-    }
     
+    const Index = SysDatas.findIndex((FindData)=>FindData.id === param_id);
+    const {Body_id,Name} = req;
+    console.log(Index);
 
     res.status(201).send("updater");
 })
