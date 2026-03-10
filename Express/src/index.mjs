@@ -29,7 +29,7 @@ App.post('/api/system',(req,res)=>{
     console.log(req.body);
     res.status(201).send("suscess")
 })
-App.get('api/system/:id', (req, res)=>{
+App.get('/api/system/:id', (req, res)=>{
     const id = parseInt(req.params.id);
     if(isNaN(id)){
        return res.status(404).send("It's not an Number");
@@ -45,6 +45,15 @@ App.get('api/system/:id', (req, res)=>{
     }
 });
 
+App.put('/api/system/:id',(req,res)=>{
+    const Put_id = parseInt(req.params.id);
+    console.log(Put_id);
+
+    const Index = SysDatas.
+
+    res.status(201).send("updater");
+})
+ 
 App.listen(PORT, ()=>{
     console.log(`Server Listen Port:${PORT}`);
 });
