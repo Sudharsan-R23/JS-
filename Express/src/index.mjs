@@ -38,18 +38,19 @@ App.get('/api/system/:id', (req, res)=>{
     }
     else{
         res.status(404).send("Data Not Find");
-    }
+    };
 });
 
 App.put('/api/system/:id',(req,res)=>{
     const param_id = parseInt(req.params.id);
     if(isNaN(param_id) || param_id === -1){
         res.status(404).send('id is not valied');
-    }
+    };
     
     const Index = SysDatas.findIndex((FindData)=>FindData.id === param_id);
-    const {Body_id,Name} = req;
-    console.log(Index);
+    const {body} =req;
+    SysDatas[Index] = {id:param_id, ...body }
+
 
     res.status(201).send("updater");
 })
