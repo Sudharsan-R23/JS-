@@ -26,7 +26,7 @@ App.get('/api/system', (req, res)=>{
 App.use(express.json());
 
 App.get('/api/system/:id', (req, res)=>{
-    const id = parseInt(req.params.id);
+    const id = Number(req.params.id);
     if(isNaN(id)){
        return res.status(404).send("It's not an Number");
     }
@@ -41,19 +41,32 @@ App.get('/api/system/:id', (req, res)=>{
     };
 });
 
-App.put('/api/system/:id',(req,res)=>{
-    const param_id = parseInt(req.params.id);
-    if(isNaN(param_id) || param_id === -1){
-        res.status(404).send('id is not valied');
+App.put('/api/system/:id', (req, res) => {
+    const id = Number(req.params.id);
+
+    if (isNaN(id) || id < 0) {
+        return res.status(400).send('Invalid ID');
+    }
+
+   
+    const index = SysDatas.findIndex(data => data.id === id);
+
+    if (index === -1) {
+        return res.status(404).send('Data not found');
+    }
+
+    const updatedData = {
+        id: id,
+        ...req.body
     };
-    
-    const Index = SysDatas.findIndex((FindData)=>FindData.id === param_id);
-    const {body} =req;
-    SysDatas[Index] = {id:param_id, ...body }
 
+    SysDatas[index] = updatedData;
 
-    res.status(201).send("updater");
-})
+    res.status(200).json({
+        message: "Updated successfully",
+        data: updatedData
+    });
+});
  
 App.listen(PORT, ()=>{
     console.log(`Server Listen Port:${PORT}`);
